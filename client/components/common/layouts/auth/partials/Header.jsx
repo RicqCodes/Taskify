@@ -10,7 +10,6 @@ const Header = () => {
     <HeaderContainer>
       <Container>
         <Logo />
-        <Button>Login</Button>
       </Container>
     </HeaderContainer>
   );

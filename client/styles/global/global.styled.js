@@ -22,7 +22,7 @@ export const GlobalStyles = createGlobalStyle`
         font-family: 'Roboto', sans-serif;
         width: 100%;
         min-height: 80vh;
-        color: ${() => color("tertiary", 800)}
+        color: rgb(57, 57, 57);
     } 
     
 

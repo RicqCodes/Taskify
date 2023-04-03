@@ -43,8 +43,10 @@ const HeaderContainer = styled.header`
   width: 100%;
   display: flex;
   top: 0;
-  position: static;
+  position: sticky;
   height: 72px;
+  background-color: #fff;
+  z-index: 9999;
   align-items: center;
   justify-content: space-between;
   color: #000;

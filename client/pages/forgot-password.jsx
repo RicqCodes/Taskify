@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 
 import { getAuthLayout } from "@/components/common/layouts/auth";
-import ForgetPassword from "@/components/pages/forget-password/ForgetPasswordForm";
+import ForgetPassword from "@/components/pages/auth/forget-password/ForgetPasswordForm";
 
 const register = () => {
   return (

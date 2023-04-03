@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 
 import { getAuthLayout } from "@/components/common/layouts/auth";
-import LoginForm from "@/components/pages/login/LoginForm";
+import LoginForm from "@/components/pages/auth/login/LoginForm";
 
 const register = () => {
   return (
@@ -18,3 +18,9 @@ const register = () => {
 export default register;
 
 register.getLayout = (page) => getAuthLayout(page);
+
+export async function getServerSideProps(context) {
+  return {
+    props: {},
+  };
+}

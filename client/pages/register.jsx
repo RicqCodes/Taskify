@@ -2,7 +2,7 @@ import Head from "next/head";
 import React from "react";
 
 import { getAuthLayout } from "@/components/common/layouts/auth";
-import RegisterForm from "@/components/pages/register/RegisterForm";
+import RegisterForm from "@/components/pages/auth/register/RegisterForm";
 
 const register = () => {
   return (

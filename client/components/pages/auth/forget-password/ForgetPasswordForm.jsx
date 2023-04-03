@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-import AuthContainer from "../_molecules/auth/AuthContainer";
-import AuthTitle from "../_molecules/auth/AuthTitle";
+import AuthContainer from "../../_molecules/auth/AuthContainer";
+import AuthTitle from "../../_molecules/auth/AuthTitle";
 import InputField from "@/components/common/InputField";
 import Button from "@/components/common/Button";
 

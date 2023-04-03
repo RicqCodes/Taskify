@@ -62,8 +62,9 @@ const ButtonCon = styled.button`
         `;
       default:
         return css`
-          background: ${() => color("primary", "main")};
+          background: ${() => color("tertiary", "main")};
           color: ${() => color("tertiary", "900")};
+          border-radius: 8px;
         `;
     }
   }}
@@ -100,7 +101,8 @@ const ButtonBack = styled.div`
         `;
       default:
         return css`
-          border: 1px solid ${() => color("primary", "main")};
+          border: 1px solid ${() => color("tertiary", "main")};
+          border-radius: 8px;
         `;
     }
   }}

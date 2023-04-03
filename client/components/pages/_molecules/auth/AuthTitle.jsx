@@ -1,3 +1,4 @@
+import { color } from "@/styles/utils.styled";
 import styled from "styled-components";
 
 const AuthTitle = ({ title, subText }) => {
@@ -17,4 +18,5 @@ const Heading = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+  color: #4f4f4f;
 `;

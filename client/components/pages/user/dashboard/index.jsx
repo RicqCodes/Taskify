@@ -1,135 +1,31 @@
-import { IoMdAddCircle } from "react-icons/io";
-
-import DashboardNav from "./_molecules/DashboardNav";
+import { theme } from "@/styles/global/theme.styled";
+import { device } from "@/styles/utils.styled";
+import React from "react";
 import styled from "styled-components";
-import TodoCard from "./_molecules/TodoCard";
+import LeftPanel from "./_molecules/LeftPanel";
+import RightPanel from "./_molecules/RightPanel";
 
 const DashboardPage = () => {
   return (
     <>
-      <DashboardNav />
-      <MainContainer>
-        <Todo>
-          <TodoContainer>
-            <Header>
-              <p>To do (4)</p>
-              <CallToAction>
-                <IoMdAddCircle />
-                <p>Add new task</p>
-              </CallToAction>
-            </Header>
-          </TodoContainer>
-          <div>
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-          </div>
-        </Todo>
-        <Todo>
-          <TodoContainer>
-            <Header>
-              <p>In Progress (4)</p>
-              <CallToAction>
-                <IoMdAddCircle />
-                <p>Add new task</p>
-              </CallToAction>
-            </Header>
-          </TodoContainer>
-          <div>
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-            <DashboardTodoCard />
-          </div>
-        </Todo>
-        <Todo>
-          <TodoContainer>
-            <Header>
-              <p>Completed (4)</p>
-              <CallToAction>
-                <IoMdAddCircle />
-                <p>Add new task</p>
-              </CallToAction>
-            </Header>
-          </TodoContainer>
-          <div>
-            <DashboardTodoCard completed />
-            <DashboardTodoCard completed />
-            <DashboardTodoCard completed />
-            <DashboardTodoCard completed />
-          </div>
-        </Todo>
-      </MainContainer>
+      <Main>
+        <LeftPanel />
+        <RightPanel />
+      </Main>
     </>
   );
 };
 
 export default DashboardPage;
 
-const MainContainer = styled.div`
-  display: flex;
-  gap: 16px;
-  padding-top: 24px;
-  justify-content: center;
-  flex-direction: column;
-  flex-wrap: wrap;
-`;
-
-const Todo = styled.div`
-  display: flex;
-  flex-direction: column;
+const Main = styled.div`
+  display: grid;
+  grid-template-columns: calc(100% - 280px) 280px;
+  grid-gap: 18px;
   width: 100%;
-  border: 2px dashed rgba(28, 29, 34, 0.08);
-  border-radius: 12px;
-  padding: 18px 12px;
+  height: calc(100vh - 115px);
 
-  > div:last-child {
-    display: flex;
-    gap: 12px;
-    width: 100%;
-    overflow: auto;
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-
-    &::-webkit-scrollbar {
-      display: none;
-    }
+  ${() => device.down("md")} {
+    grid-template-columns: 100%;
   }
-`;
-
-const TodoContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-`;
-
-const Header = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-
-  p {
-    font-size: 14px;
-  }
-
-  & > p {
-    color: #aaa;
-  }
-`;
-
-const CallToAction = styled.div`
-  display: flex;
-  gap: 8px;
-  color: #000;
-  align-items: center;
-  margin-left: auto;
-`;
-
-const DashboardTodoCard = styled(TodoCard)`
-  width: 100%;
-  max-width: 320px;
-  min-width: 320px;
 `;

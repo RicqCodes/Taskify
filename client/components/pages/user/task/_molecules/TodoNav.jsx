@@ -10,7 +10,7 @@ import { device } from "@/styles/utils.styled";
 
 const DashboardNav = () => {
   return (
-    <>
+    <OverallContainer>
       <NavContainer>
         <Switch>
           <div className="active">
@@ -34,13 +34,20 @@ const DashboardNav = () => {
         </Right>
       </NavContainer>
       <Divider />
-    </>
+    </OverallContainer>
   );
 };
 
 export default DashboardNav;
 
-const NavContainer = styled.nav`
+const OverallContainer = styled.nav`
+  top: 72px;
+  position: sticky;
+  background: #fff;
+  z-index: 999;
+`;
+
+const NavContainer = styled.div`
   display: flex;
   width: 100%;
   align-items: center;

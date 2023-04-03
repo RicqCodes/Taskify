@@ -46,7 +46,7 @@ const InputGroup = styled.div`
     display: flex;
     gap: 8px;
     align-items: center;
-    color: ${() => color("tertiary", 800)};
+    color: ${() => color("tertiary", 700)};
     font-weight: 400;
   }
 
@@ -55,7 +55,7 @@ const InputGroup = styled.div`
     gap: 8px;
     align-items: center;
     color: ${({ $status }) =>
-      $status === "error" ? color("secondary", 900) : color("tertiary", 600)};
+      $status === "error" ? color("primary", 900) : color("tertiary", 600)};
   }
 
   > div {
@@ -67,8 +67,8 @@ const InputGroup = styled.div`
     border: 1px solid
       ${({ $status }) =>
         $status === "error"
-          ? color("secondary", 900)
-          : color("primary", "main")};
+          ? color("primary", 900)
+          : color("tertiary", "main")};
     color: ${() => color("primary", 200)};
     display: flex;
     align-items: center;

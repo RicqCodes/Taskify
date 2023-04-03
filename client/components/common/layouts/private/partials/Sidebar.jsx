@@ -11,7 +11,6 @@ import Logo from "@/components/common/Logo";
 import { device } from "@/styles/utils.styled";
 import { color } from "@/styles/utils.styled";
 import { useRouter } from "next/router";
-import Button from "@/components/common/Button";
 
 const Sidebar = () => {
   const location = useRouter();
@@ -59,7 +58,12 @@ const Sidebar = () => {
             <div>
               <BiLogOut />
             </div>
-            <button>Logout</button>
+            <button
+              style={{ background: "transparent", border: "none" }}
+              type="button"
+            >
+              Logout
+            </button>
           </LinkContainer>
         </div>
         {/* <div>get premium now</div> */}
@@ -98,16 +102,6 @@ const SidebarElement = styled.nav`
   }
 `;
 
-const SwitchMode = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  margin-top: auto;
-  text-transform: capitalize;
-`;
-
 const Links = styled.div`
   display: flex;
   flex-direction: column;
@@ -118,6 +112,7 @@ const LinkContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 
   padding: 14px 0;
 
@@ -126,8 +121,10 @@ const LinkContainer = styled.div`
     color: #666;
   }
 
-  & > a {
+  & > a,
+  button {
     color: #666;
+    font-size: 16px;
   }
 
   &.active {
@@ -139,10 +136,4 @@ const LinkContainer = styled.div`
       color: ${() => color("tertiary", 900)};
     }
   }
-`;
-
-const Logout = styled.div`
-  display: flex;
-  bottom: 50%;
-  position: fixed;
 `;
