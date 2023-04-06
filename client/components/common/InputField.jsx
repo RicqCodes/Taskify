@@ -28,7 +28,7 @@ const InputField = ({
           {textarea ? <textarea {...props} /> : <input {...props} />}
           {endAdornment && <span>{endAdornment}</span>}
         </div>
-        {helperText && <span>{helperText}</span>}
+        {helperText && <small>{helperText}</small>}
       </InputGroup>
     </>
   );
@@ -50,7 +50,7 @@ const InputGroup = styled.div`
     font-weight: 400;
   }
 
-  > span {
+  > small {
     display: flex;
     gap: 8px;
     align-items: center;

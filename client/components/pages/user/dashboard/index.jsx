@@ -1,11 +1,22 @@
 import { theme } from "@/styles/global/theme.styled";
 import { device } from "@/styles/utils.styled";
-import React from "react";
+import useAuthProtection from "@/utils/hooks/useAuthProtection";
+import { useRouter } from "next/router";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import LeftPanel from "./_molecules/LeftPanel";
 import RightPanel from "./_molecules/RightPanel";
 
 const DashboardPage = () => {
+  // const { isAuthenticated } = useAuthProtection();
+  const router = useRouter();
+
+  // console.log(isAuthenticated);
+
+  // useEffect(() => {
+  //   if (isAuthenticated === false) router.push("/login");
+  // }, [isAuthenticated]);
+
   return (
     <>
       <Main>

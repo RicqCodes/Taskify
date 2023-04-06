@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { toast } from "react-hot-toast";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
 import AuthContainer from "../../_molecules/auth/AuthContainer";
@@ -7,11 +8,18 @@ import AuthHeader from "../../_molecules/auth/AuthHeader";
 import InputField from "@/components/common/InputField";
 import Button from "@/components/common/Button";
 
+import { useLoginMutation } from "@/redux/api/childApi/authApi";
 import useFormValidation from "@/utils/hooks/useFormValidation";
 import { validation } from "../validation";
+import { useRouter } from "next/router";
+import useAuthProtection from "@/utils/hooks/useAuthProtection";
 
 const LoginForm = () => {
   const [passwordType, setPasswordType] = useState(true);
+  const router = useRouter();
+  const { isAuthenticated } = useAuthProtection();
+  const [login, { isLoading }] = useLoginMutation();
+
   const initialData = {
     email: "",
     password: "",
@@ -28,12 +36,30 @@ const LoginForm = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    if (!validateOnSubmit()) {
+      return;
+    }
+
+    await toast.promise(login(formData).unwrap(), {
+      loading: "Logging you in any second now....",
+      success: (response) => {
+        return "Logged in successfully!";
+      },
+      error: (response) => response.message,
+    });
   };
+
+  console.log(isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) router.push("/user/dashboard");
+  }, [isAuthenticated]);
 
   return (
     <>
       <AuthContainer>
-        <form onSubmit={(e) => handleSubmit(e)} autoComplete="off">
+        <form onSubmit={(e) => handleSubmit(e)}>
           <AuthHeader title="Welcome Back!" />
           <InputField
             type="email"
@@ -50,7 +76,7 @@ const LoginForm = () => {
             id="password"
             label="Password"
             placeholder="Enter Password"
-            endIcon={
+            endAdornment={
               passwordType ? (
                 <AiOutlineEye onClick={() => setPasswordType(false)} />
               ) : (
@@ -67,7 +93,7 @@ const LoginForm = () => {
               <strong>Forgot password?</strong>
             </small>
           </Link>
-          <Button type="button" $fullWidth>
+          <Button type="submit" $fullWidth>
             Log In
           </Button>
           <div style={{ textAlign: "center" }}>

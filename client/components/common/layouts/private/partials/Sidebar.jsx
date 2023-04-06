@@ -14,7 +14,7 @@ import { useRouter } from "next/router";
 
 const Sidebar = () => {
   const location = useRouter();
-  console.log(location);
+
   return (
     <>
       <SidebarElement>

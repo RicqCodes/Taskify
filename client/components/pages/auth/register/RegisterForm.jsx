@@ -10,12 +10,15 @@ import Button from "@/components/common/Button";
 import useFormValidation from "@/utils/hooks/useFormValidation";
 import { validation } from "../validation";
 
-import { useRegisterMutation } from "@/utils/redux/api/childApi/authApi";
+import { useRegisterMutation } from "@/redux/api/childApi/authApi";
 import { toast } from "react-hot-toast";
+import { useRouter } from "next/router";
+import useAuthProtection from "@/utils/hooks/useAuthProtection";
 
 const SignUpForm = () => {
   const [passwordType, setPasswordType] = useState(true);
-
+  const router = useRouter();
+  const { isAuthenticated } = useAuthProtection();
   const [register, { isLoading }] = useRegisterMutation();
 
   const initialData = {
@@ -34,17 +37,27 @@ const SignUpForm = () => {
     validateOnSubmit,
   } = useFormValidation(initialData, validation);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Call API to register account
-    const registerAccount = validateOnSubmit() && register(formData);
+    if (!validateOnSubmit()) {
+      return;
+    }
+
+    useEffect(() => {
+      if (isAuthenticated) router.push("/user/dashboard");
+    }, [isAuthenticated]);
 
     // Use Promise Toast to show users account is being created
-    toast.promise(registerAccount, {
+    await toast.promise(register(formData).unwrap(), {
       loading: "Creating your account...",
-      success: <b>Account created</b>,
-      error: <b>Could not create account.</b>,
+      success: (response) => {
+        return "Account Created Sucessfully";
+      },
+      error: (response) => {
+        return response.message;
+      },
     });
   };
 

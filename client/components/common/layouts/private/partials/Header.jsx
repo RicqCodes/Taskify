@@ -1,18 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 import { FiSearch } from "react-icons/fi";
-// import { IoNotificationsOutline } from "react-icons/io";
 import { GrNotification } from "react-icons/gr";
 import { AiOutlineCalendar } from "react-icons/ai";
 
 import InputField from "@/components/common/InputField";
 import { device } from "@/styles/utils.styled";
+import { useGetUserQuery } from "@/redux/api/childApi/userApi";
 
 const Header = () => {
+  // const { data, isLoading } = useGetUserQuery();
+
+  const date = new Date().toDateString("MM DD YYYY");
+
   return (
     <HeaderContainer>
       <Intro>
-        <p>Hello Ronaldo 👋</p>
+        {/* <p>Hello {data?.name?.split(" ")[0]} 👋</p> */}
         <small>Let's pick up where we left!</small>
       </Intro>
       <Right>
@@ -26,7 +30,7 @@ const Header = () => {
         <div>
           <AiOutlineCalendar />
           <div>
-            <small>March 31 2023</small>
+            <small>{date}</small>
           </div>
         </div>
         <div>
