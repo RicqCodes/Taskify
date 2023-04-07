@@ -13,10 +13,8 @@ export const middleware = async (req, res) => {
       ...defaultHeaders,
       Cookie: req.cookies,
       origin: getEnv("appOrigin"),
-      //   "X-XSRF-TOKEN": decodeURI(...req.cookies.getAll()),
     },
   });
-  const data = response.json();
 
-  console.log(data);
+  console.log(response.status);
 };
