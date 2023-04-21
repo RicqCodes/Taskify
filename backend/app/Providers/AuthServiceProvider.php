@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 // use Illuminate\Support\Facades\Gate;
+
+use App\Models\Project;
+use App\Policies\ProjectPolicy;
+use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 
 class AuthServiceProvider extends ServiceProvider
@@ -13,7 +17,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array<class-string, class-string>
      */
     protected $policies = [
-        // 'App\Models\Model' => 'App\Policies\ModelPolicy',
+        Project::class => ProjectPolicy::class,
     ];
 
     /**
@@ -21,6 +25,10 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->registerPolicies();
+    
+        ResetPassword::createUrlUsing( function($user, string $token) {
+            return env('APP_URL')."/auth/?mode=resetPassword&email=$user->email&token=$token";
+        });
     }
 }
