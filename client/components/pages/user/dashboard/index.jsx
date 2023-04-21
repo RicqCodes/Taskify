@@ -1,3 +1,4 @@
+import Modal from "@/components/common/Modal";
 import { theme } from "@/styles/global/theme.styled";
 import { device } from "@/styles/utils.styled";
 import useAuthProtection from "@/utils/hooks/useAuthProtection";
@@ -8,14 +9,14 @@ import LeftPanel from "./_molecules/LeftPanel";
 import RightPanel from "./_molecules/RightPanel";
 
 const DashboardPage = () => {
-  // const { isAuthenticated } = useAuthProtection();
+  const { isAuthenticated } = useAuthProtection();
   const router = useRouter();
 
   // console.log(isAuthenticated);
 
-  // useEffect(() => {
-  //   if (isAuthenticated === false) router.push("/login");
-  // }, [isAuthenticated]);
+  useEffect(() => {
+    if (isAuthenticated === false) router.push("/login");
+  }, [isAuthenticated]);
 
   return (
     <>
@@ -23,6 +24,7 @@ const DashboardPage = () => {
         <LeftPanel />
         <RightPanel />
       </Main>
+      {/* <Modal /> */}
     </>
   );
 };

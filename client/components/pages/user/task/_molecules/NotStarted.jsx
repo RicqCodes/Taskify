@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { IoMdAddCircle } from "react-icons/io";
 
 import TodoCard from "./TodoCard";
+import Card from "@/components/common/Card";
 
 const NotStarted = () => {
   return (
@@ -17,10 +18,10 @@ const NotStarted = () => {
         </Header>
       </TodoContainer>
       <div>
-        <TaskTodoCard />
-        <TaskTodoCard />
-        <TaskTodoCard />
-        <TaskTodoCard />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
       </div>
     </Todo>
   );
@@ -35,6 +36,7 @@ const Todo = styled.div`
   border: 2px dashed rgba(28, 29, 34, 0.08);
   border-radius: 12px;
   padding: 18px 12px;
+  gap: 12px;
 
   > div:last-child {
     display: flex;

@@ -2,19 +2,19 @@ import Head from "next/head";
 import React from "react";
 
 import { getAuthLayout } from "@/components/common/layouts/auth";
-import ForgetPassword from "@/components/pages/auth/forget-password/ForgetPasswordForm";
+import ForgotPasswordForm from "@/components/pages/auth/forgot-password/ForgotPasswordForm";
 
-const register = () => {
+const ForgotPassword = () => {
   return (
     <>
       <Head>
         <title>Forgot Password</title>
       </Head>
-      <ForgetPassword />
+      <ForgotPasswordForm />
     </>
   );
 };
 
-export default register;
+export default ForgotPassword;
 
-register.getLayout = (page) => getAuthLayout(page);
+ForgotPassword.getLayout = (page) => getAuthLayout(page);

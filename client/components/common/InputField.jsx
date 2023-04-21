@@ -66,9 +66,7 @@ const InputGroup = styled.div`
     border-radius: 4px;
     border: 1px solid
       ${({ $status }) =>
-        $status === "error"
-          ? color("primary", 900)
-          : color("tertiary", "main")};
+        $status === "error" ? color("primary", 900) : color("primary", 200)};
     color: ${() => color("primary", 200)};
     display: flex;
     align-items: center;
@@ -76,7 +74,7 @@ const InputGroup = styled.div`
     &:focus,
     &:active,
     &:hover {
-      border: 1px solid ${() => color("primary", "main")};
+      border: 1px solid ${() => color("tertiary", "main")};
     }
 
     > span:first-child {
@@ -92,13 +90,18 @@ const InputGroup = styled.div`
       height: 100%;
       font-size: 16px;
       padding: 12px;
+      color: ${() => color("secondary", 100)};
     }
 
     > textarea {
       width: 100%;
+      border: none;
       height: 100%;
       font-size: 16px;
       padding: 12px;
+      background-color: transparent;
+      max-height: 40px;
+      outline: none;
     }
   }
 `;

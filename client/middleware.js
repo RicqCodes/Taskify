@@ -1,4 +1,5 @@
-import { getEnv } from "./utils/helper";
+import { NextResponse } from "next/server";
+import { getAllCookies, getEnv } from "./utils/helper";
 
 const defaultHeaders = {
   Accept: "application/json",
@@ -6,15 +7,33 @@ const defaultHeaders = {
   "X-Requested-With": "XMLHttpRequest",
 };
 
+const authRoutes = ["/register", "/login", "/forgot-password"];
+
+export const config = {
+  matcher: [
+    "/user/:path*",
+    "/register",
+    "/login",
+    "/forgot-password",
+    "/auth/reset-password",
+  ],
+};
+
 export const middleware = async (req, res) => {
   const response = await fetch(`${getEnv("backendUrl")}/api/user`, {
     credentials: "include",
     headers: {
       ...defaultHeaders,
-      Cookie: req.cookies,
+      Cookie: getAllCookies(req),
       origin: getEnv("appOrigin"),
     },
   });
 
-  console.log(response.status);
+  if (response.ok) {
+    if (authRoutes.includes(req.nextUrl.pathname))
+      return NextResponse.redirect(new URL("/user/dashboard", req.url));
+  } else {
+    if (req.nextUrl.pathname.startsWith("/user"))
+      return NextResponse.redirect(new URL("/login", req.url));
+  }
 };

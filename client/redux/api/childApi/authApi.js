@@ -20,7 +20,26 @@ const authApi = taskifyApi.injectEndpoints({
       }),
       invalidatesTags: ["User"],
     }),
+    forgotPassword: builder.mutation({
+      query: (formData) => ({
+        url: "forgot-password",
+        method: "POST",
+        data: formData,
+      }),
+    }),
+    resetPassword: builder.mutation({
+      query: (formData) => ({
+        url: "reset-password",
+        method: "POST",
+        data: formData,
+      }),
+    }),
   }),
 });
 
-export const { useRegisterMutation, useLoginMutation } = authApi;
+export const {
+  useRegisterMutation,
+  useLoginMutation,
+  useForgotPasswordMutation,
+  useResetPasswordMutation,
+} = authApi;

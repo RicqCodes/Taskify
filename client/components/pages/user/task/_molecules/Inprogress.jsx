@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Card from "@/components/common/Card";
 
 import TodoCard from "./TodoCard";
 
@@ -12,10 +13,10 @@ const Inprogress = () => {
         </Header>
       </TodoContainer>
       <div>
-        <TaskTodoCard />
-        <TaskTodoCard />
-        <TaskTodoCard />
-        <TaskTodoCard />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
+        <Card CardType={<TaskTodoCard />} />
       </div>
     </Todo>
   );
@@ -30,6 +31,7 @@ const Todo = styled.div`
   border: 2px dashed rgba(28, 29, 34, 0.08);
   border-radius: 12px;
   padding: 18px 12px;
+  gap: 12px;
 
   > div:last-child {
     display: flex;

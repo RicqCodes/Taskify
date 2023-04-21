@@ -50,8 +50,6 @@ const LoginForm = () => {
     });
   };
 
-  console.log(isAuthenticated);
-
   useEffect(() => {
     if (isAuthenticated) router.push("/user/dashboard");
   }, [isAuthenticated]);

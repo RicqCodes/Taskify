@@ -4,7 +4,7 @@ import React from "react";
 import { getAuthLayout } from "@/components/common/layouts/auth";
 import LoginForm from "@/components/pages/auth/login/LoginForm";
 
-const register = () => {
+const Login = () => {
   return (
     <>
       <Head>
@@ -15,9 +15,9 @@ const register = () => {
   );
 };
 
-export default register;
+export default Login;
 
-register.getLayout = (page) => getAuthLayout(page);
+Login.getLayout = (page) => getAuthLayout(page);
 
 export async function getServerSideProps(context) {
   return {

@@ -4,7 +4,7 @@ import React from "react";
 import { getAuthLayout } from "@/components/common/layouts/auth";
 import RegisterForm from "@/components/pages/auth/register/RegisterForm";
 
-const register = () => {
+const Register = () => {
   return (
     <>
       <Head>
@@ -15,6 +15,6 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;
 
-register.getLayout = (page) => getAuthLayout(page);
+Register.getLayout = (page) => getAuthLayout(page);

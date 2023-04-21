@@ -18,6 +18,14 @@ export default AuthLayout;
 
 const Main = styled.main`
   width: 100%;
+  min-height: calc(100vh - 61px);
+  display: flex;
+  -webkit-box-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px 0px;
 
   ${Container} {
     max-width: 960px;

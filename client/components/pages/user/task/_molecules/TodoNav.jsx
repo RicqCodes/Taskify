@@ -29,7 +29,7 @@ const DashboardNav = () => {
             <HiOutlineDotsCircleHorizontal />
           </div>
           <Button radius variant="grey" noBack>
-            New Template
+            Add Project
           </Button>
         </Right>
       </NavContainer>

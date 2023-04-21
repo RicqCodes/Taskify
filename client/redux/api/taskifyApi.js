@@ -6,7 +6,7 @@ import { getEnv } from "@/utils/helper";
 
 export const taskifyApi = createApi({
   reducerPath: "taskifyApi",
-  tagTypes: ["User", "Tasks"],
+  tagTypes: ["User", "Tasks", "Project"],
   baseQuery: axiosBaseQuery({ baseUrl: `${getEnv("backendUrl")}/api/` }),
   extractRehydrationInfo(action, { reducerPath }) {
     if (action.type === HYDRATE) {

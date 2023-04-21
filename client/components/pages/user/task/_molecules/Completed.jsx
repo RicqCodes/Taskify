@@ -1,3 +1,4 @@
+import Card from "@/components/common/Card";
 import React from "react";
 import styled from "styled-components";
 
@@ -12,10 +13,10 @@ const Completed = () => {
         </Header>
       </TodoContainer>
       <div>
-        <TaskTodoCard completed />
-        <TaskTodoCard completed />
-        <TaskTodoCard completed />
-        <TaskTodoCard completed />
+        <Card CardType={<TaskTodoCard completed />} />
+        <Card CardType={<TaskTodoCard completed />} />
+        <Card CardType={<TaskTodoCard completed />} />
+        <Card CardType={<TaskTodoCard completed />} />
       </div>
     </Todo>
   );
@@ -30,6 +31,7 @@ const Todo = styled.div`
   border: 2px dashed rgba(28, 29, 34, 0.08);
   border-radius: 12px;
   padding: 18px 12px;
+  gap: 12px;
 
   > div:last-child {
     display: flex;

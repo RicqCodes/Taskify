@@ -30,12 +30,12 @@ const Sidebar = () => {
               <Link href="/user/dashboard">Overview</Link>
             </LinkContainer>
             <LinkContainer
-              className={location.pathname === "/user/task" && "active"}
+              className={location.pathname === "/user/projects" && "active"}
             >
               <div>
                 <FaTasks />
               </div>
-              <Link href="/user/task">My Task</Link>
+              <Link href="/user/projects">My Projects</Link>
             </LinkContainer>
             <LinkContainer
               className={location.pathname === "/user/favorites" && "active"}

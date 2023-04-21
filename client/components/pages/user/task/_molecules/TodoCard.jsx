@@ -7,7 +7,7 @@ import { color } from "@/styles/utils.styled";
 
 const TodoCard = ({ completed, className }) => {
   return (
-    <CardContainer className={className}>
+    <CardInnerContainer className={className}>
       <div>
         <Title>
           <p>Design new ui presentation</p>
@@ -39,18 +39,17 @@ const TodoCard = ({ completed, className }) => {
           </div>
         </Info>
       </TimeContainer>
-    </CardContainer>
+    </CardInnerContainer>
   );
 };
 
 export default TodoCard;
 
-const CardContainer = styled.div`
+const CardInnerContainer = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 24px;
   width: 100%;
-  border: 2px solid rgba(28, 29, 34, 0.06);
   border-radius: 12px;
   padding: 24px;
   gap: 28px;

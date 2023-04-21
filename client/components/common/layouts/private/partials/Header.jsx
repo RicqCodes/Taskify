@@ -7,16 +7,19 @@ import { AiOutlineCalendar } from "react-icons/ai";
 import InputField from "@/components/common/InputField";
 import { device } from "@/styles/utils.styled";
 import { useGetUserQuery } from "@/redux/api/childApi/userApi";
+import Image from "next/image";
 
 const Header = () => {
-  // const { data, isLoading } = useGetUserQuery();
+  const { data, isLoading } = useGetUserQuery();
+  console.log(data);
 
   const date = new Date().toDateString("MM DD YYYY");
+  const dp = data.data?.userData.profile_picture;
 
   return (
     <HeaderContainer>
       <Intro>
-        {/* <p>Hello {data?.name?.split(" ")[0]} 👋</p> */}
+        <p>Hello {data.data?.name?.split(" ")[0]} 👋</p>
         <small>Let's pick up where we left!</small>
       </Intro>
       <Right>
@@ -34,7 +37,9 @@ const Header = () => {
           </div>
         </div>
         <div>
-          <Profile></Profile>
+          <Profile>
+            <Image src={dp} width="36" height="36" />
+          </Profile>
         </div>
       </Right>
     </HeaderContainer>
@@ -49,11 +54,11 @@ const HeaderContainer = styled.header`
   top: 0;
   position: sticky;
   height: 72px;
-  background-color: #fff;
-  z-index: 9999;
+  z-index: 999;
   align-items: center;
   justify-content: space-between;
   color: #000;
+  background: #fff;
 `;
 
 const Intro = styled.div`
@@ -109,5 +114,5 @@ const Profile = styled.div`
   width: 36px;
 
   border-radius: 50%;
-  background-color: #000;
+  background-color: transparent;
 `;

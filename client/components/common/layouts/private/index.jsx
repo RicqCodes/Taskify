@@ -25,6 +25,7 @@ export default AppLayout;
 const LayoutContainer = styled.div`
   display: grid;
   grid-template-columns: 240px calc(100% - 240px);
+  position: relative;
 
   ${() => device.down("md")} {
     grid-template-columns: 100%;
@@ -36,6 +37,7 @@ const MainSection = styled(Container)`
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background: #fff;
 
   > main {
     padding-top: 24px;

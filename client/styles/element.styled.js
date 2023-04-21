@@ -21,7 +21,7 @@ export const Divider = styled.span`
 // Resizes based on device scrren size, very fluid
 export const FluidTitle = styled.h1`
   color: ${() => (color ? color : color())};
-  font-size: 4.8vw;
+  font-size: 4vw;
   font-family: "Epilogue", sans-serif;
   font-weight: ${({ $weight }) => ($weight ? $weight : "700")};
   ${() => device.up("sm")} {

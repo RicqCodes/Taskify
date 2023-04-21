@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 
@@ -37,6 +37,10 @@ const SignUpForm = () => {
     validateOnSubmit,
   } = useFormValidation(initialData, validation);
 
+  useEffect(() => {
+    if (isAuthenticated) router.push("/user/dashboard");
+  }, [isAuthenticated]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -44,10 +48,6 @@ const SignUpForm = () => {
     if (!validateOnSubmit()) {
       return;
     }
-
-    useEffect(() => {
-      if (isAuthenticated) router.push("/user/dashboard");
-    }, [isAuthenticated]);
 
     // Use Promise Toast to show users account is being created
     await toast.promise(register(formData).unwrap(), {

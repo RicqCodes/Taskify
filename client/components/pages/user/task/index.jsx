@@ -12,9 +12,9 @@ const TaskPage = () => {
     <>
       <DashboardNav />
       <MainContainer>
-        <NotStarted />
+        {/* <NotStarted />
         <Inprogress />
-        <Completed />
+        <Completed /> */}
       </MainContainer>
     </>
   );
